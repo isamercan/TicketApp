@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22D68" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="BusRequestModelEntity" representedClassName="BusRequestModelEntity" syncable="YES">
+        <attribute name="arriveLocationId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="arriveLocationName" optional="YES" attributeType="String"/>
+        <attribute name="departureDate" optional="YES" attributeType="String"/>
+        <attribute name="departureLocationId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="departureLocationName" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="SessionEntity" representedClassName="SessionEntity" syncable="YES">
+        <attribute name="deviceID" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="sessionID" optional="YES" attributeType="String"/>
+    </entity>
+</model>
