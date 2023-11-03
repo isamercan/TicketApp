@@ -7,12 +7,19 @@
 
 import UIKit
 
+// Define a protocol for the bus journeys router
 protocol BusJourneysRouterProtocol: BaseRouter, AlertHandler, AnyObject {
+    // Method to navigate to the check-out screen
     func showCheckOut()
 }
 
+// Define a class that conforms to the BusJourneysRouterProtocol
 final class BusJourneysRouter: BusJourneysRouterProtocol {
+    // Property to manage navigation
     var navigationController: UINavigationController!
 
-    func showCheckOut() { }
+    // Method to show the check-out screen
+    func showCheckOut() {
+        // Implementation details for navigating to the check-out screen
+    }
 }

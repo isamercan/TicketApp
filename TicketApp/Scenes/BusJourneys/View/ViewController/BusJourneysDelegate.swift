@@ -15,10 +15,12 @@ import UIKit
 final class BusJourneysDelegate: NSObject, UICollectionViewDelegate {
     private let viewModel: BusJourneysViewModelSelectionProtocol
     
+    // Initialize the delegate with a view model
     init(viewModel: BusJourneysViewModelSelectionProtocol) {
         self.viewModel = viewModel
     }
     
+    // Called when an item in the collection view is selected
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         viewModel.didSelectJourney(indexPath)
     }

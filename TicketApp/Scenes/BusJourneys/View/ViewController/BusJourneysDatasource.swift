@@ -17,23 +17,27 @@ import UIKit
 final class BusJourneysDatasource: NSObject, UICollectionViewDataSource {
     private var viewModel: BusJourneysViewModelDataProtocol
     
+    // Initialize the data source with a view model
     init(viewModel: BusJourneysViewModelDataProtocol) {
         self.viewModel = viewModel
     }
     
+    // Number of sections in the collection view
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return viewModel.numberOfSections()
     }
     
+    // Number of items in a specific section
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.collectionView(numberOfItemsInSection: section)
     }
     
+    // Create and configure cells for collection view
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch viewModel.getSectionType(section: indexPath.section) {
         case .info:
             let cell: InfoCell = collectionView.dequeueReusableCell(for: indexPath)
-            cell.setup(title: "Fatal Error")
+            cell.setup(title: "About Header")
             return cell
         case .busJourneys(items: let items):
             let cell: JourneyItemCell = collectionView.dequeueReusableCell(for: indexPath)
@@ -43,6 +47,7 @@ final class BusJourneysDatasource: NSObject, UICollectionViewDataSource {
         }
     }
     
+    // Create and configure section header views
     func collectionView(
         _ collectionView: UICollectionView,
         viewForSupplementaryElementOfKind kind: String,

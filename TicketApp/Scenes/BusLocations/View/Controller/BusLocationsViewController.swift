@@ -16,7 +16,7 @@ final class BusLocationsViewController: BaseXIBUIViewController {
     // MARK: - Outlets
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var loadingIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet private weak var searchTextField: UITextField!
     
     // MARK: - Variables
     private let viewModel: BusLocationsViewModelProtocol

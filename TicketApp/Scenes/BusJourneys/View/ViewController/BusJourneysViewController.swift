@@ -32,15 +32,24 @@ final class BusJourneysViewController: BaseXIBUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Configure the navigation bar
         configureNavigationBar()
+        
+        // Set the navigation controller for the router
         router.navigationController = self.navigationController!
+        
+        // Call the viewDidLoad method of the view model
         viewModel.viewDidLoad()
+        
+        // Apply settings to the collection view
         applyCollectionViewSettings()
     }
 }
 
 // MARK: - Private helpers
 extension BusJourneysViewController {
+    
     private func applyCollectionViewSettings() {
         collectionView.registerCells(InfoCell.self, JourneyItemCell.self)
         collectionView.registerHeaders(BusJourneysSectionHeaderView.self)
@@ -85,6 +94,7 @@ extension BusJourneysViewController {
 
 // MARK: - Quick initial/injection environment
 extension BusJourneysViewController {
+    // A structure to define dependencies for the view controller
     struct Dependencies {
         let model: BusJourneysViewModelProtocol
         let datasource: UICollectionViewDataSource
@@ -94,6 +104,7 @@ extension BusJourneysViewController {
 }
 
 extension BusJourneysViewController.Dependencies {
+    // A static method to provide default dependencies
     static func `default`(viewModel: BusJourneysViewModelProtocol) -> Self {
         return .init(
             model: viewModel,

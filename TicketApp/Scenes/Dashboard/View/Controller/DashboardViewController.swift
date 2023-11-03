@@ -16,16 +16,16 @@ class DashboardViewController: BaseXIBUIViewController {
     private let router: DashboardRouterRouterProtocol
     
     //MARK: - Outlets
-    @IBOutlet weak var arriveStackView: UIStackView!
-    @IBOutlet weak var departureStackView: UIStackView!
-    @IBOutlet weak var lblDepartureTitle: UILabel!
-    @IBOutlet weak var lblArriveTitle: UILabel!
-    @IBOutlet weak var lblDepartureDate: UILabel!
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet private weak var arriveStackView: UIStackView!
+    @IBOutlet private weak var departureStackView: UIStackView!
+    @IBOutlet private weak var lblDepartureTitle: UILabel!
+    @IBOutlet private weak var lblArriveTitle: UILabel!
+    @IBOutlet private weak var lblDepartureDate: UILabel!
+    @IBOutlet private weak var textField: UITextField!
     
-    @IBOutlet weak var btnSetToday: CustomButton!
-    @IBOutlet weak var btnSetTomorrow: CustomButton!
-    @IBOutlet weak var btnSearch: CustomButton!
+    @IBOutlet private weak var btnSetToday: CustomButton!
+    @IBOutlet private weak var btnSetTomorrow: CustomButton!
+    @IBOutlet private weak var btnSearch: CustomButton!
     
     let datePicker = UIDatePicker()
     
@@ -159,6 +159,7 @@ extension DashboardViewController: BusLocationsViewControllerSelectionDelegate {
 
 // MARK: - Private helpers
 extension DashboardViewController {
+    
     func setupDatePickerForTextField(_ textField: UITextField) {
         // This function sets up a UIDatePicker as an input view for a given UITextField
         // and configures it to allow selecting a date starting from tomorrow.
@@ -182,6 +183,7 @@ extension DashboardViewController {
         datePicker.preferredDatePickerStyle = .wheels
         datePicker.datePickerMode = .date
     }
+    
     @objc func doneButtonClicked() {
         viewModel.setDepartureDate(date: datePicker.date)
         self.view.endEditing(true)

@@ -8,6 +8,7 @@
 import UIKit
 
 extension UIView {
+    // IBInspectable property to set the border color in Interface Builder
     @IBInspectable var borderColor: UIColor? {
         set {
             layer.borderColor = newValue?.cgColor
@@ -20,18 +21,18 @@ extension UIView {
         }
     }
     
-    
+    // IBInspectable property to set the border width in Interface Builder
     @IBInspectable var borderWidth: CGFloat {
-          set {
-              layer.borderWidth = newValue
-          }
-          get {
-              return layer.borderWidth
-          }
+        set {
+            layer.borderWidth = newValue
+        }
+        get {
+            return layer.borderWidth
+        }
     }
     
-    @IBInspectable
-    var cornerRadius: CGFloat {
+    // IBInspectable property to set the corner radius in Interface Builder
+    @IBInspectable var cornerRadius: CGFloat {
         get {
             return layer.cornerRadius
         }
@@ -42,7 +43,7 @@ extension UIView {
 }
 
 extension UIView {
-    
+    // Method to add a border with custom color, width, and round radius
     func addBorder(color: UIColor = .black, borderWidth: CGFloat = 1, roundRadius: CGFloat = 0) {
         layer.borderWidth = borderWidth
         layer.borderColor = color.cgColor
@@ -50,8 +51,10 @@ extension UIView {
         clipsToBounds = true
     }
     
+    // Method to round the corners with a specified radius
     func roundCorner(_ radius: CGFloat = 2) {
         layer.cornerRadius = radius
         clipsToBounds = true
     }
 }
+

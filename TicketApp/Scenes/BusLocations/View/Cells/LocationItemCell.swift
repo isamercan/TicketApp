@@ -9,7 +9,7 @@ import UIKit
 
 final class LocationItemCell: UICollectionViewCell {
     
-    @IBOutlet weak var lblLocationTitle: UILabel!
+    @IBOutlet private weak var lblLocationTitle: UILabel!
     
     func setCellData(model: LocationItemDataModel) {
         lblLocationTitle.text = model.name
