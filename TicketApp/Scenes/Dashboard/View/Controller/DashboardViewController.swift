@@ -62,23 +62,32 @@ class DashboardViewController: BaseXIBUIViewController {
         addGestureRecognizers()
         setupDatePickerForTextField(textField)
     }
-    
+}
+
+// MARK: - Actions
+extension DashboardViewController {
+    // Action for the search button
     @IBAction func btnSearchAction(_ sender: CustomButton) {
+        // Check the validity of search data using the view model
         guard viewModel.isValidSearchData() else { return }
+        // Set local data and navigate to the bus journey view
         viewModel.setLocalData()
         router.showBusJourney(model: viewModel.searchData)
     }
     
+    // Action for setting the date
     @IBAction func setDateAction(_ sender: CustomButton) {
+        // Determine the date based on the tag of the button (0 for today, 1 for tomorrow)
         let date = sender.tag == 0 ? Date.today : Date.tomorrow
         viewModel.setDepartureDate(date: date)
     }
     
+    // Action to toggle departure and arrival destinations
     @IBAction func toggleAction(_ sender: Any) {
         viewModel.toggleDestinations()
     }
-    
 }
+
 
 // MARK: - Private helpers
 extension DashboardViewController {
