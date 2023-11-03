@@ -10,6 +10,7 @@ import Alamofire
 
 extension BaseAPI {
 
+    // Build parameters and parameter encoding for a network request task
     func buildParameters(task: Task) -> ([String:Any], ParameterEncoding) {
         switch task {
         case .requestPlain:
@@ -19,6 +20,7 @@ extension BaseAPI {
         }
     }
     
+    // Build the target for a network request based on the RequestType
     func buildTarget(target : RequestType) -> String {
         switch target {
         case .requestPath(path: let path):
@@ -28,6 +30,7 @@ extension BaseAPI {
         }
     }
     
+    // Build headers for a network request
     func buildHeaders(target: RequestType) -> [String:Any] {
         return [:]
     }

@@ -16,7 +16,6 @@ final class BusLocationsViewModel: BusLocationsViewModelProtocol {
     private var dataProvider: BusLocationsDataProviderProtocol
     private var sections: [BusLocationsListSection] = []
     private var busLocationsList: [LocationItemDataModel] = []
-    private var deviceSession: DeviceSessionModel?
     
     var reload: (() -> Void)?
     var showLoading: (() -> Void)?

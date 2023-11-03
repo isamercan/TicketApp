@@ -18,7 +18,7 @@
 		F85807082AF1614000258434 /* DashboardApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85807072AF1614000258434 /* DashboardApi.swift */; };
 		F858070A2AF1619300258434 /* GeneralApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85807092AF1619300258434 /* GeneralApi.swift */; };
 		F858070C2AF161DA00258434 /* BusJourneyApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = F858070B2AF161DA00258434 /* BusJourneyApi.swift */; };
-		F858070F2AF1660300258434 /* GetBusJourneyRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F858070E2AF1660300258434 /* GetBusJourneyRequestModel.swift */; };
+		F858070F2AF1660300258434 /* GetBusJourneyRequestDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F858070E2AF1660300258434 /* GetBusJourneyRequestDataModel.swift */; };
 		F85807112AF1669500258434 /* DeviceSessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85807102AF1669500258434 /* DeviceSessionModel.swift */; };
 		F85807132AF166A800258434 /* BaseRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85807122AF166A800258434 /* BaseRequestModel.swift */; };
 		F85807152AF16C5500258434 /* IPAddressManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85807142AF16C5500258434 /* IPAddressManager.swift */; };
@@ -137,7 +137,7 @@
 		F85807072AF1614000258434 /* DashboardApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardApi.swift; sourceTree = "<group>"; };
 		F85807092AF1619300258434 /* GeneralApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralApi.swift; sourceTree = "<group>"; };
 		F858070B2AF161DA00258434 /* BusJourneyApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusJourneyApi.swift; sourceTree = "<group>"; };
-		F858070E2AF1660300258434 /* GetBusJourneyRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBusJourneyRequestModel.swift; sourceTree = "<group>"; };
+		F858070E2AF1660300258434 /* GetBusJourneyRequestDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBusJourneyRequestDataModel.swift; sourceTree = "<group>"; };
 		F85807102AF1669500258434 /* DeviceSessionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSessionModel.swift; sourceTree = "<group>"; };
 		F85807122AF166A800258434 /* BaseRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequestModel.swift; sourceTree = "<group>"; };
 		F85807142AF16C5500258434 /* IPAddressManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPAddressManager.swift; sourceTree = "<group>"; };
@@ -294,7 +294,7 @@
 		F858070D2AF165EF00258434 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F858070E2AF1660300258434 /* GetBusJourneyRequestModel.swift */,
+				F858070E2AF1660300258434 /* GetBusJourneyRequestDataModel.swift */,
 				F85807102AF1669500258434 /* DeviceSessionModel.swift */,
 				F85807122AF166A800258434 /* BaseRequestModel.swift */,
 				F8DA09B12AF38EDB00AD1D7D /* SessionRequestModel.swift */,
@@ -1002,7 +1002,7 @@
 				F8DA09932AF2AB8B00AD1D7D /* JourneyItemCell.swift in Sources */,
 				F8DA09D52AF3FD2600AD1D7D /* CoreDataError.swift in Sources */,
 				F8DA099D2AF2C07E00AD1D7D /* GetSessionDataModel.swift in Sources */,
-				F858070F2AF1660300258434 /* GetBusJourneyRequestModel.swift in Sources */,
+				F858070F2AF1660300258434 /* GetBusJourneyRequestDataModel.swift in Sources */,
 				F8B6627D2AF04D5C00BB8159 /* Configuration.swift in Sources */,
 				F8B662152AF0419E00BB8159 /* AppDelegate.swift in Sources */,
 				F8264AF22AF435AC005168D9 /* SearchDataModel.swift in Sources */,

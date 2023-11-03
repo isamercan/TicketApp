@@ -16,8 +16,7 @@ class BaseAPI<T: TargetType> {
         self.networking = networking
     }
     
-    func fetchData<M: Decodable>(target: T, completion:@escaping (Result<M, APIError>)->Void) {
-        
+    func fetchData<M: Decodable>(target: T, completion:@escaping (Result<M, APIError>)->Void) {        
         let method = Alamofire.HTTPMethod(rawValue: target.method.rawValue)
         let allHeader = target.headers + AppConfig.shared.addDefaultHeaders()
         let headers = Alamofire.HTTPHeaders(allHeader)
@@ -39,22 +38,5 @@ class BaseAPI<T: TargetType> {
                     return completion(.failure(.statusMessage(message: error.localizedDescription)))
                 }
             }
-    }
-    
-    func downloadFile(target: T, completion:@escaping (Result<URL, APIError>)->Void) {
-        let targetPath = buildTarget(target: target.path)
-        let url = (target.baseURL.desc + target.version.desc + targetPath)
-        let allHeader = target.headers + AppConfig.shared.addDefaultHeaders()
-        let headers = Alamofire.HTTPHeaders(allHeader)
-        
-        networking.session.download(url,
-                                    method: .get,
-                                    headers: headers).response { documentDir in
-            if let fileURL = documentDir.fileURL {
-                completion(.success(fileURL))
-            } else {
-                completion(.failure(.statusMessage(message: "File is not found")))
-            }
-        }
     }
 }

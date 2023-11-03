@@ -8,10 +8,15 @@
 import Foundation
 import CoreData
 
-
+// Protocol for managing search-related data locally
 protocol SearchLocalDataProviderProtocol {
+    // Get the search model
     func getSearchModel() -> BusRequestModelEntity?
+    
+    // Set the search model with a result indicating success or failure
     func setSearchModel(_ model: SearchDataModel) -> Result<Bool, Error>
+    
+    // Remove the search model
     func removeSearchModel()
 }
 
@@ -82,7 +87,8 @@ final class SearchLocalDataProvider: SearchLocalDataProviderProtocol {
             for i in items {
                 let _ = repository.delete(entity: i)
             }
-        case .failure( _):
+        case .failure(let failure):
+            self.logger?.log(failure, with: ["info": "Function: \(#function), line: \(#line)"])
             break
         }
     }

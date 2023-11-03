@@ -8,11 +8,18 @@
 import Foundation
 import CoreData
 
+// Protocol for managing session data locally
 protocol SessionLocalDataProviderProtocol {
+    // Get the current session
     func getSession() -> DeviceSessionModel?
+    
+    // Set the session data with a result indicating success or failure
     func setSession(_ model: DeviceSessionModel) -> Result<Bool, Error>
+    
+    // Remove sessions with a specific session ID
     func removeSessions(with sessionID: String)
 }
+
 
 final class SessionLocalDataProvider: SessionLocalDataProviderProtocol {
     private let repository: CoreDataRepository<SessionEntity>

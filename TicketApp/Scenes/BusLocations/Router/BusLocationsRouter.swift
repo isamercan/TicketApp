@@ -7,12 +7,16 @@
 
 import UIKit
 
+// Protocol for the bus locations router
 protocol BusLocationsRouterProtocol: BaseRouter, AlertHandler, AnyObject {
-    func showBusJourneyVC()
+    // Method to show the bus journey view controller
+    func addNewLocation()
 }
 
+// Implementation of the bus locations router
 final class BusLocationsRouter: BusLocationsRouterProtocol {
-    
     var navigationController: UINavigationController!
-    func showBusJourneyVC() {}
+    
+    // Method to show the add New Location view controller (empty implementation)
+    func addNewLocation() {}
 }

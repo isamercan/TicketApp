@@ -7,11 +7,21 @@
 
 import Foundation
 
+// Protocol for a date and time manager
 protocol DateTimeManagerProtocol {
-    func format(_ dateTimeFormat:UBDateTimeFormat, date:Date)-> String
-    func format(_ dateTimeFormat:UBDateTimeFormat, date: String)-> String
+    // Format a date to a string using a specific date format
+    func format(_ dateTimeFormat: UBDateTimeFormat, date: Date) -> String
+    
+    // Format a date string to a string using a specific date format
+    func format(_ dateTimeFormat: UBDateTimeFormat, date: String) -> String
+    
+    // Convert a date string to a Date object using a specific date format
     func formatToDate(_ dateTimeFormat: UBDateTimeFormat, dateString: String) -> Date
+    
+    // Check if the first date is before the second date
     func isBeforeDate(d1: Date, d2: Date) -> Bool
+    
+    // Check if the first date is after the second date
     func isAfterDate(d1: Date, d2: Date) -> Bool
 }
 
@@ -47,9 +57,12 @@ enum UBDateTimeFormat: DateTimeFormat {
     }
 }
 
-final class DateTimeManager : DateTimeManagerProtocol {
-  
+
+final class DateTimeManager: DateTimeManagerProtocol {
+    // Singleton instance of DateTimeManager
     private static var utilInstance: DateTimeManager?
+    
+    // Get the shared instance of DateTimeManager
     public class func shared() -> DateTimeManager {
         if utilInstance == nil {
             utilInstance = DateTimeManager()
@@ -57,36 +70,41 @@ final class DateTimeManager : DateTimeManagerProtocol {
         return utilInstance!
     }
     
-    private func getFormatter(format:String) -> DateFormatter{
+    // Private method to create and configure a date formatter
+    private func getFormatter(format: String) -> DateFormatter {
         let formatter = DateFormatter()
         formatter.dateFormat = format
         let locale = Locale.current.language.languageCode?.identifier ?? "tr-TR"
-        formatter.locale = Locale.init(identifier: locale)
+        formatter.locale = Locale(identifier: locale)
         return formatter
     }
     
+    // Format a Date to a string using a specific date format
     func format(_ dateTimeFormat: UBDateTimeFormat, date: Date) -> String {
         let formattedDate = getFormatter(format: dateTimeFormat.iso).string(from: date)
         return formattedDate
     }
     
+    // Convert a date string to a Date object using a specific date format
     func formatToDate(_ dateTimeFormat: UBDateTimeFormat, dateString: String) -> Date {
         let date = getFormatter(format: dateTimeFormat.iso).date(from: dateString)
         return date!
     }
     
+    // Format a date string to a string using a specific date format
     func format(_ dateTimeFormat: UBDateTimeFormat, date: String) -> String {
         let dateFormat = formatToDate(.typeRequestDate, dateString: date)
         let formattedDate = getFormatter(format: dateTimeFormat.iso).string(from: dateFormat)
         return formattedDate
     }
     
+    // Check if the first date is before the second date
     func isBeforeDate(d1: Date, d2: Date) -> Bool {
         return d1 < d2 ? true : false
     }
     
+    // Check if the first date is after the second date
     func isAfterDate(d1: Date, d2: Date) -> Bool {
         return d1 > d2 ? true : false
     }
-    
 }

@@ -36,17 +36,33 @@ final class BusJourneysViewModel: BusJourneysViewModelProtocol {
         fetch()
     }
     
-    private func createBaseRequestModel<T: Codable>(data: T) -> BaseRequestModel<T> {
-        let deviceSession = sessionLocalDataProvider.getSession()
-        let baseRequest = BaseRequestModel(deviceSession: deviceSession, date: DateTimeManager.shared().format(.calendarTextFormat, date: Date()), data: data)
-        return baseRequest
-    }
-        
+    
+    // Private function to create search request data
     private func createSearchRequestData() -> GetBusJourneyRequestDataModel? {
+        // Check if departureLocation and arriveLocation have valid IDs
         guard let originID = searchData.departureLocation?.id,
-                let destinationID = searchData.arriveLocation?.id else { return nil }
+              let destinationID = searchData.arriveLocation?.id else {
+            return nil
+        }
+        
+        // Format the departure date using DateTimeManager
         let departureDate = DateTimeManager.shared().format(.typeRequestDate, date: searchData.departureDate ?? Date.tomorrow)
+        
+        // Create and return the GetBusJourneyRequestDataModel
         return GetBusJourneyRequestDataModel(originID: originID, destinationID: destinationID, departureDate: departureDate)
+    }
+    
+    // Private function to create a BaseRequestModel
+    private func createBaseRequestModel<T: Codable>(data: T) -> BaseRequestModel<T> {
+        // Get the device session from the sessionLocalDataProvider
+        let deviceSession = sessionLocalDataProvider.getSession()
+        
+        // Get the current date and format it using DateTimeManager
+        let currentDate = DateTimeManager.shared().format(.calendarTextFormat, date: Date())
+        
+        // Create and return the BaseRequestModel with the provided data, device session, and current date
+        let baseRequest = BaseRequestModel(deviceSession: deviceSession, date: currentDate, data: data)
+        return baseRequest
     }
     
     private func fetch() {
@@ -72,16 +88,26 @@ final class BusJourneysViewModel: BusJourneysViewModelProtocol {
     }
     
     
+    // Function to set up the feed
     func setupFeed() {
+        // Remove any existing sections
         sections.removeAll()
+        
+        // Check if the busjourneysList is not empty
         guard !busjourneysList.isEmpty else {
+            // If it's empty, show a data operation failure with a message and description
             showDataOperationFail("No Content", NSURLErrorDataNotAllowed.description) { }
             return
         }
+        
+        // If the busjourneysList is not empty, create a section with the busJourneys items
         sections.append(.busJourneys(items: self.busjourneysList))
+        
+        // Notify the view to reload and show the collection
         self.reload?()
         self.showCollection?()
     }
+
     
     func numberOfSections() -> Int {
         return sections.count
@@ -112,31 +138,11 @@ final class BusJourneysViewModel: BusJourneysViewModelProtocol {
     func didTapFlight(_ indexPath: IndexPath) {
         switch getSectionType(section: indexPath.section) {
         case .busJourneys(let items):
-            let item = items[indexPath.row]
+            let _ = items[indexPath.row]
         default:
             break
         }
     }
     
-    func didSelectJourney(_ indexPath: IndexPath) {
-        
-    }
-    
-        
-}
-
-
-extension BusJourneysViewModel {
-//    func getSession() async throws -> DeviceSessionModel {
-//        return try await withCheckedThrowingContinuation({ continuation in
-//            sessionLocalDataProvider.getSession { result in
-//                switch result {
-//                case .success(let deviceSession):
-//                    continuation.resume(with: .success(deviceSession))
-//                case .failure(let error):
-//                    continuation.resume(with: .failure(error))
-//                }
-//            }
-//        })
-//    }
+    func didSelectJourney(_ indexPath: IndexPath) { }
 }
